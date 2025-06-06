@@ -81,7 +81,14 @@ jobs:
           task-definition: ${{ steps.retrieve-task-def.outputs.task-def-file }}
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
-    
+
+      - name: Set deployment config to avoid port conflict
+        run: |
+          aws ecs update-service \
+            --cluster ${{ env.ECS_CLUSTER }} \
+            --service ${{ env.ECS_SERVICE }} \
+            --deployment-configuration minimumHealthyPercent=0,maximumPercent=100
+
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
