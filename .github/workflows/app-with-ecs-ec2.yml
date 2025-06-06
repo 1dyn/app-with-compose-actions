@@ -87,7 +87,8 @@ jobs:
           aws ecs update-service \
             --cluster ${{ env.ECS_CLUSTER }} \
             --service ${{ env.ECS_SERVICE }} \
-            --deployment-configuration minimumHealthyPercent=0,maximumPercent=100
+            --deployment-configuration minimumHealthyPercent=0,maximumPercent=200
+
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
