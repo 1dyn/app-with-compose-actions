@@ -8,7 +8,7 @@ env:
   AWS_REGION: ap-northeast-2
   ECR_REPOSITORY: ecr-cicd
   ECS_SERVICE: cicd-service
-  ECS_CLUSTER: first-ecs-cicd-cluster
+  ECS_CLUSTER: first-ecs-cluster
   CONTAINER_NAME: backend-server
   
 jobs:
